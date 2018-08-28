@@ -2,7 +2,7 @@ package com.lazy.tool;
 
 import com.lazy.constant.Constant;
 
-public class tool {
+public class Tool {
 
 	/**
 	 * 加大括号

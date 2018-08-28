@@ -14,7 +14,9 @@ public class Constant {
 		public String value;
 
 		private Annotation(String value) {
+			
 			this.value = value;
+			
 		}
 		
 	}
@@ -22,7 +24,7 @@ public class Constant {
 	/**
 	 * 
 	 * @author Lazy-bird
-	 *	方法名
+	 *	方法名前缀
 	 */
 	public static enum Method {
 
@@ -31,7 +33,9 @@ public class Constant {
 		public String value;
 
 		private Method(String value) {
+			
 			this.value = value;
+			
 		}
 		
 	}
@@ -39,7 +43,7 @@ public class Constant {
 	/**
 	 * 
 	 * @author Lazy-bird
-	 *	方法名
+	 *	括号
 	 */
 	public static enum Symbol {
 
@@ -48,10 +52,68 @@ public class Constant {
 		public String value;
 
 		private Symbol(String value) {
+			
 			this.value = value;
+			
+		}
+		
+	}
+	
+	/**
+	 * 
+	 * @author Lazy-bird
+	 *	关键字
+	 */
+	public static enum Keyword {
+
+		IF(" interface "), CS(" class "), VD(" void "), BK("break");
+
+		public String value;
+
+		private Keyword (String value) {
+			
+			this.value = value;
+			
+		}
+		
+	}
+	
+	/**
+	 * 
+	 * @author Lazy-bird
+	 *	关键字
+	 */
+	public static enum Qualifier {
+
+		LP("private "), RP("public "), PT("protected "), DF("default ");
+
+		public String value;
+
+		private Qualifier (String value) {
+			
+			this.value = value;
+			
 		}
 		
 	}
 	
 	
+	/**
+	 * 
+	 * @author Lazy-bird
+	 *	关键字
+	 */
+	public static enum Mark {
+
+		CM(" , "), SM(" : "), CO(";"), LS(" < "), MO(" > "), EQ(" == "), AS(" = "), AD(" + "),ST(" - ");
+
+		public String value;
+
+		private Mark (String value) {
+			
+			this.value = value;
+			
+		}
+		
+	}
 }
