@@ -34,4 +34,20 @@ public class Tool {
 
 	}
 	
+	
+	public static String toFirstUpperCase(String word){
+		
+		return word.substring(0,1)
+				
+				.toUpperCase()
+				
+				.concat(word.substring(1).toLowerCase());
+		
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(toFirstUpperCase("WnjnWUdasda"));
+		System.out.println(addBrace("WnjnWUdasda"));
+	}
+	
 }

@@ -1,6 +1,6 @@
 package com.lazy.meta;
 
-public class Column {
+public class Column extends Metadata {
 
 	private boolean primary;
 	private String type;

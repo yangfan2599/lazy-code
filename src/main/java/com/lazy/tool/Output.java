@@ -1,4 +1,4 @@
-package com.lazy.stream;
+package com.lazy.tool;
 
 import java.io.File;
 import java.io.FileOutputStream;

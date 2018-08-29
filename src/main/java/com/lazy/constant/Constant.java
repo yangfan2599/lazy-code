@@ -97,7 +97,24 @@ public class Constant {
 		
 	}
 	
-	
+	/**
+	 * 
+	 * @author Lazy-bird
+	 *	数据类型
+	 */
+	public static enum DataType {
+
+		BT(" Byte "), LP(" Integer "), RP(" Long "), PT(" Float "), DF(" Double ");
+
+		public String value;
+
+		private DataType (String value) {
+			
+			this.value = value;
+			
+		}
+		
+	}
 	/**
 	 * 
 	 * @author Lazy-bird

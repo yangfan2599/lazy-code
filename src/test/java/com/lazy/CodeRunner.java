@@ -2,14 +2,14 @@ package com.lazy;
 
 import org.junit.Test;
 
-import com.lazy.meta.Metadata;
+import com.lazy.connection.Database;
 
 public class CodeRunner {
 
 	@Test
 	public void run() {
 		
-		System.out.print(Metadata.getTables());
+		System.out.print(Database.getTables());
 		
 	}
 
