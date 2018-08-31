@@ -47,7 +47,7 @@ public class Constant {
 	 */
 	public static enum Symbol {
 
-		LB(" {\r "), RB(" \r} "), LP(" ( "), RP(" ) ");
+		LB(" {\r "), RB(" \r} "), LP(" ( "), RP(" ) "), NL("\r");
 
 		public String value;
 
@@ -85,7 +85,7 @@ public class Constant {
 	 */
 	public static enum Qualifier {
 
-		LP("private "), RP("public "), PT("protected "), DF("default ");
+		PV("private "), PB("public "), PT("protected "), DF("default ");
 
 		public String value;
 
@@ -104,7 +104,7 @@ public class Constant {
 	 */
 	public static enum DataType {
 
-		BT(" Byte "), LP(" Integer "), RP(" Long "), PT(" Float "), DF(" Double ");
+		BT(" Byte "), LP(" Integer "), RP(" Long "), PT(" Float "), DF(" Double "), BD(" BigDecimal "), SG(" String ");
 
 		public String value;
 
@@ -115,6 +115,7 @@ public class Constant {
 		}
 		
 	}
+	
 	/**
 	 * 
 	 * @author Lazy-bird
@@ -127,6 +128,25 @@ public class Constant {
 		public String value;
 
 		private Mark (String value) {
+			
+			this.value = value;
+			
+		}
+		
+	}
+	
+	/**
+	 * 
+	 * @author Lazy-bird
+	 *	分层
+	 */
+	public static enum Layered {
+
+		C("Controller"), S("Service"), I("ServiceImpl"), M("Mapper");
+
+		public String value;
+
+		private Layered (String value) {
 			
 			this.value = value;
 			

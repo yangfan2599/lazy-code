@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Table extends Metadata {
 
-	private List<String> imports;
 	private String name;
 	private List<Column> keys;
 	private List<Column> columns;
@@ -43,21 +42,10 @@ public class Table extends Metadata {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public List<String> getImports() {
-		return imports;
-	}
-
-	public void setImports(List<String> imports) {
-		this.imports = imports;
-	}
 
 	@Override
 	public String toString() {
-		return "Table [imports=" + imports + ", name=" + name + ", keys=" + keys + ", columns=" + columns
-				+ ", getColumns()=" + getColumns() + ", getKeys()=" + getKeys() + ", getName()=" + getName()
-				+ ", getImports()=" + getImports() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
+		return "Table [name=" + name + ", keys=" + keys + ", columns=" + columns + "]";
 	}
 	
 
