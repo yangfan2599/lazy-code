@@ -1,13 +1,11 @@
 package com.lazy;
 
-import org.junit.Test;
 
 import com.lazy.connection.Database;
 
 public class CodeRunner {
 
-	@Test
-	public void run() {
+	public static void main(String [] args) {
 		
 		System.out.print(Database.getTables());
 		
