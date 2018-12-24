@@ -1,53 +1,72 @@
 package com.lazy.builder;
 
 import com.lazy.constant.Constant;
+import com.lazy.converter.Converter;
 import com.lazy.meta.Metadata;
-import com.lazy.meta.Table;
-import com.lazy.tool.Tool;
-
 
 public class Class implements Builder {
 
 	
-	
 	public String build(Metadata data) {
+
+		StringBuffer buffer = new StringBuffer();
 		
-		if ( data instanceof Table ) {
-		
-			Table table = (Table)data;
-			
-			String name = table.getName();
-			
-			String [] names = name.split("_");
-			
-			StringBuffer buffer = new StringBuffer();
-			
-			if ( names.length > 1 ) {
+		buildAnnotation(data,buffer);
+					
+		buffer.append(Constant.Qualifier.PUBLIC.value)
+
+				.append(Constant.SPACE)
 				
-				for(int i = 1 ; i < names.length ; i ++){
-					
-					buffer.append(Tool.toFirstUpperCase(names[i]));
-					
-				}
+				.append(Constant.Keyword.CLASS.value)
+
+				.append(Constant.SPACE)
 				
-			} else {
-				
-				buffer.append(Tool.toFirstUpperCase(name));
-				
-			}
+				.append(data.getClassName());
+
+		if(!Constant.Layered.MODEL.value.equalsIgnoreCase(data.getLayered())) {
 			
-			return new StringBuffer()
-					
-					.append(Constant.Qualifier.PB)
-					
-					.append(Constant.Keyword.CS)
-					
-					.append(buffer).toString();
+			buffer.append(data.getLayered());
 			
 		}
 		
-		return null;
+		return buffer.toString();
+
+	}
+
+	
+	private void buildAnnotation(Metadata data,StringBuffer buffer) {
 		
+		
+		if(Constant.Layered.CONTROLLER.value.equalsIgnoreCase(data.getLayered())) {
+			
+			buffer.append(Constant.Annotation.RESTCONTROLLER.value)
+			
+			.append("\n")
+			
+			.append(Constant.Annotation.REQUESTMAPPING.value)
+			
+			.append("(\"/")
+			
+			.append(data.getLowerClassName())
+			
+			.append("\")").append("\n");
+			
+		} else if(Constant.Layered.IMPLIMENTS.value.equalsIgnoreCase(data.getLayered())) {
+			
+			buffer.append(Constant.Annotation.SERVICE.value)
+			
+			.append("(\"")
+			
+			.append(Converter.toFirstLowweCase(data.getServiceClassName()))
+			
+			.append("\")")
+			
+			.append("\n");
+
+		}
 	}
 	
+	public static void main(String[] args) {
+		
+	}
 }

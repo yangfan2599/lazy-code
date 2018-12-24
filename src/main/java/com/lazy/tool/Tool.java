@@ -1,53 +1,72 @@
 package com.lazy.tool;
 
+import java.util.Collection;
+
 import com.lazy.constant.Constant;
 
 public class Tool {
 
 	/**
 	 * 加大括号
+	 * 
 	 * @param content
 	 * @return
 	 */
-	public static String addBracket(String content) {
+	public static StringBuffer addBracket(StringBuffer content) {
 
 		StringBuffer buffer = new StringBuffer();
 
 		buffer.append(Constant.Symbol.LB.value).append(content).append(Constant.Symbol.RB.value);
 
-		return buffer.toString();
+		return buffer;
 
 	}
-	
+
 	/**
 	 * 加小括号
+	 * 
 	 * @param content
 	 * @return
 	 */
-	public static String addBrace(String content) {
+	public static StringBuffer addBrace(StringBuffer content) {
 
 		StringBuffer buffer = new StringBuffer();
 
 		buffer.append(Constant.Symbol.LP.value).append(content).append(Constant.Symbol.RP.value);
 
-		return buffer.toString();
+		return buffer;
 
 	}
 	
-	
-	public static String toFirstUpperCase(String word){
+	public static boolean isNotEmpty(Object o) {
 		
-		return word.substring(0,1)
-				
-				.toUpperCase()
-				
-				.concat(word.substring(1).toLowerCase());
+		if (o == null) {
+			
+			return false;
+			
+		} else {
+			
+			return true;
+			
+		}
 		
 	}
-	
+
+	public static boolean isNotEmpty(Collection<?> c) {
+		
+		if (c == null || c.size() == 0) {
+			
+			return false;
+			
+		} else {
+			
+			return true;
+			
+		}
+		
+	}
+
 	public static void main(String[] args) {
-		System.out.println(toFirstUpperCase("WnjnWUdasda"));
-		System.out.println(addBrace("WnjnWUdasda"));
 	}
-	
+
 }

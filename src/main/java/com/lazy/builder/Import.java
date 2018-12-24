@@ -13,58 +13,79 @@ public class Import implements Builder {
 	
 	public String build(Metadata data) {
 		
-		if(data instanceof Table){
+		StringBuffer buffer = new StringBuffer("\n");
+		
+		if(Constant.Layered.CONTROLLER.value.equalsIgnoreCase(data.getLayered())) {
+			
+			buffer.append("import org.springframework.web.bind.annotation.RestController;\n");
+			
+			buffer.append("import org.springframework.web.bind.annotation.RequestMapping;\n");
+			
+			buffer.append("import javax.annotation.Resource;\n");
+			
+			buffer.append("import ").append(Constant.PACKAGE)
+			
+			.append(Constant.Layered.MODEL.value.toLowerCase()).append(".").append(data.getClassName()).append(";\n");
+			
+			buffer.append("import ").append(Constant.PACKAGE).append(Constant.Layered.SERVICE.value.toLowerCase()).append(".")
+			
+			.append(data.getClassName()).append(Constant.Layered.SERVICE.value).append(";\n");
+			
+		} else if(Constant.Layered.SERVICE.value.equalsIgnoreCase(data.getLayered())) {
 			
 			Table table = (Table)data;
 			
 			List<Column> columns = table.getColumns();
 			
-			StringBuffer buffer = new StringBuffer();
+			buffer.append(buildDataTypeImport(columns));
 			
-			for(Column column : columns){
-				
-				buffer.append(casePackage(column.getType())).append(Constant.Symbol.NL);
-				
-			}
+			buffer.append("import ").append(Constant.PACKAGE).append(".")
 			
-			return buffer.toString();
+			.append(Constant.Layered.MODEL.value.toLowerCase())
 			
-		}else{
+			.append(data.getClassName()).append("\n");
 			
-			return null;
+		} else if(Constant.Layered.IMPLIMENTS.value.equalsIgnoreCase(data.getLayered())) {
 			
-		}
+			buffer.append("import org.springframework.stereotype.Service;\n");
+			
+			buffer.append("import javax.annotation.Resource;\n");
+			
+			buffer.append("import ").append(Constant.PACKAGE).append(".")
+			
+			.append(Constant.Layered.MODEL.value.toLowerCase()).append(".")
+			
+			.append(data.getClassName()).append("\n");
+			
+		} else if(Constant.Layered.MAPPER.value.equalsIgnoreCase(data.getLayered())) {
+			
+			buffer.append("import ").append(Constant.PACKAGE).append(".")
+			
+			.append(Constant.Layered.MODEL.value.toLowerCase())
+			
+			.append(".")
+			
+			.append(data.getClassName()).append("\n");
+		} 
 		
-		
+		return buffer.toString();
 	}
 	
-	public static String casePackage(String type){
+	
+	private String buildDataTypeImport(List<Column> columns) {
 		
-		String result = null;
+		StringBuffer buffer = new StringBuffer();
 		
-		switch (type) {
-		
-		case "BIGDECIMAL":
+		for( Column column : columns ) {
 			
-			result = "java.math.BigDecimal;";
-			
-			break;
-			
-		case "DATE":
-			
-			result = "java.util.Date;";
-			
-			break;
-
-		default:
-			
-			result = null;
-			
-			break;
+			if ("bigdecimal".equalsIgnoreCase(column.getPropertyType())) {
+				
+				buffer.append("import java.math.BigDecimal;\n");
+				
+			} 
 			
 		}
 		
-		return result;
+		return buffer.toString();
 	}
-
 }
